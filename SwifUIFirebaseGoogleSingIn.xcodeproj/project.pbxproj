@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		30F033032BE8B5C100FDEAF4 /* SwifUIFirebaseGoogleSingInApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F033022BE8B5C100FDEAF4 /* SwifUIFirebaseGoogleSingInApp.swift */; };
-		30F033052BE8B5C100FDEAF4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F033042BE8B5C100FDEAF4 /* ContentView.swift */; };
 		30F033072BE8B5C200FDEAF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30F033062BE8B5C200FDEAF4 /* Assets.xcassets */; };
 		30F0330A2BE8B5C200FDEAF4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30F033092BE8B5C200FDEAF4 /* Preview Assets.xcassets */; };
 		30F033112BE8B7D300FDEAF4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30F033102BE8B7D300FDEAF4 /* GoogleService-Info.plist */; };
@@ -19,12 +18,14 @@
 		30F0331E2BE8CB8F00FDEAF4 /* SingInEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0331D2BE8CB8F00FDEAF4 /* SingInEmailView.swift */; };
 		30F033202BE8CBB200FDEAF4 /* SingEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0331F2BE8CBB200FDEAF4 /* SingEmailViewModel.swift */; };
 		30F033222BE8CEE100FDEAF4 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F033212BE8CEE100FDEAF4 /* AuthenticationManager.swift */; };
+		30F033302BE8F03E00FDEAF4 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0332F2BE8F03E00FDEAF4 /* RootView.swift */; };
+		30F033332BE907C900FDEAF4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F033322BE907C900FDEAF4 /* SettingsView.swift */; };
+		30F033352BE9081B00FDEAF4 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F033342BE9081B00FDEAF4 /* SettingsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		30F032FF2BE8B5C100FDEAF4 /* SwifUIFirebaseGoogleSingIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwifUIFirebaseGoogleSingIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F033022BE8B5C100FDEAF4 /* SwifUIFirebaseGoogleSingInApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifUIFirebaseGoogleSingInApp.swift; sourceTree = "<group>"; };
-		30F033042BE8B5C100FDEAF4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		30F033062BE8B5C200FDEAF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30F033092BE8B5C200FDEAF4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		30F033102BE8B7D300FDEAF4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -32,6 +33,9 @@
 		30F0331D2BE8CB8F00FDEAF4 /* SingInEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingInEmailView.swift; sourceTree = "<group>"; };
 		30F0331F2BE8CBB200FDEAF4 /* SingEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingEmailViewModel.swift; sourceTree = "<group>"; };
 		30F033212BE8CEE100FDEAF4 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		30F0332F2BE8F03E00FDEAF4 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		30F033322BE907C900FDEAF4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		30F033342BE9081B00FDEAF4 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,12 +72,13 @@
 		30F033012BE8B5C100FDEAF4 /* SwifUIFirebaseGoogleSingIn */ = {
 			isa = PBXGroup;
 			children = (
+				30F033312BE8F46F00FDEAF4 /* Settings */,
 				30F0331A2BE8CA1D00FDEAF4 /* Authentication */,
-				30F033022BE8B5C100FDEAF4 /* SwifUIFirebaseGoogleSingInApp.swift */,
-				30F033042BE8B5C100FDEAF4 /* ContentView.swift */,
 				30F033062BE8B5C200FDEAF4 /* Assets.xcassets */,
 				30F033102BE8B7D300FDEAF4 /* GoogleService-Info.plist */,
 				30F033082BE8B5C200FDEAF4 /* Preview Content */,
+				30F0332F2BE8F03E00FDEAF4 /* RootView.swift */,
+				30F033022BE8B5C100FDEAF4 /* SwifUIFirebaseGoogleSingInApp.swift */,
 			);
 			path = SwifUIFirebaseGoogleSingIn;
 			sourceTree = "<group>";
@@ -102,6 +107,15 @@
 				30F033212BE8CEE100FDEAF4 /* AuthenticationManager.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		30F033312BE8F46F00FDEAF4 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				30F033322BE907C900FDEAF4 /* SettingsView.swift */,
+				30F033342BE9081B00FDEAF4 /* SettingsViewModel.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,12 +197,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30F033052BE8B5C100FDEAF4 /* ContentView.swift in Sources */,
+				30F033332BE907C900FDEAF4 /* SettingsView.swift in Sources */,
 				30F033032BE8B5C100FDEAF4 /* SwifUIFirebaseGoogleSingInApp.swift in Sources */,
 				30F033202BE8CBB200FDEAF4 /* SingEmailViewModel.swift in Sources */,
+				30F033302BE8F03E00FDEAF4 /* RootView.swift in Sources */,
 				30F033222BE8CEE100FDEAF4 /* AuthenticationManager.swift in Sources */,
 				30F0331C2BE8CA5900FDEAF4 /* AuthenticationView.swift in Sources */,
 				30F0331E2BE8CB8F00FDEAF4 /* SingInEmailView.swift in Sources */,
+				30F033352BE9081B00FDEAF4 /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,7 +21,9 @@ struct SingInEmailView: View {
                 .background(Color.gray.opacity(0.4))
                 .cornerRadius(10)
             
-            Button(action: {}, label: {
+            Button(action: {
+                viewModel.singIn()
+            }, label: {
                 Text("Sing In")
                     .font(.headline)
                     .foregroundStyle(.white)

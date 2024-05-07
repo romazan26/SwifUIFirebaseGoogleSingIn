@@ -9,7 +9,9 @@ import SwiftUI
  
 struct SingInEmailView: View {
     
+    @Binding var showSingInView: Bool
     @StateObject private var viewModel = SingEmailViewModel()
+    
     var body: some View {
         VStack {
             TextField("Email...", text: $viewModel.email)
@@ -22,9 +24,37 @@ struct SingInEmailView: View {
                 .cornerRadius(10)
             
             Button(action: {
-                viewModel.singIn()
+                Task{
+                    do {
+                        try await viewModel.singIn()
+                        showSingInView = false
+                    }catch {
+                        print(error)
+                    }
+                }
+                
             }, label: {
-                Text("Sing In")
+                Text("SingIn")
+                    .font(.headline)
+                    .foregroundStyle(.white)
+                    .frame(height: 55)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.blue)
+                    .cornerRadius(10)
+            })
+            
+            Button(action: {
+                Task{
+                    do {
+                        try await viewModel.createUser()
+                        showSingInView = false
+                    }catch {
+                        print(error)
+                    }
+                }
+                
+            }, label: {
+                Text("Create new user")
                     .font(.headline)
                     .foregroundStyle(.white)
                     .frame(height: 55)
@@ -40,7 +70,7 @@ struct SingInEmailView: View {
 
 #Preview {
     NavigationStack{
-        SingInEmailView()
+        SingInEmailView(showSingInView: .constant(false))
     }
     
 }

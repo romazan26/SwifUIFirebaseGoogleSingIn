@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30BE5B072BEABC9A00B00862 /* BluButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BE5B062BEABC9A00B00862 /* BluButtonView.swift */; };
 		30F033032BE8B5C100FDEAF4 /* SwifUIFirebaseGoogleSingInApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F033022BE8B5C100FDEAF4 /* SwifUIFirebaseGoogleSingInApp.swift */; };
 		30F033072BE8B5C200FDEAF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30F033062BE8B5C200FDEAF4 /* Assets.xcassets */; };
 		30F0330A2BE8B5C200FDEAF4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30F033092BE8B5C200FDEAF4 /* Preview Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30BE5B062BEABC9A00B00862 /* BluButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluButtonView.swift; sourceTree = "<group>"; };
 		30F032FF2BE8B5C100FDEAF4 /* SwifUIFirebaseGoogleSingIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwifUIFirebaseGoogleSingIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F033022BE8B5C100FDEAF4 /* SwifUIFirebaseGoogleSingInApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifUIFirebaseGoogleSingInApp.swift; sourceTree = "<group>"; };
 		30F033062BE8B5C200FDEAF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -52,6 +54,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30BE5B052BEABC8000B00862 /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+				30BE5B062BEABC9A00B00862 /* BluButtonView.swift */,
+			);
+			path = Extention;
+			sourceTree = "<group>";
+		};
+		30BE5B082BEABD8900B00862 /* SingIn */ = {
+			isa = PBXGroup;
+			children = (
+				30F0331D2BE8CB8F00FDEAF4 /* SingInEmailView.swift */,
+				30F0331F2BE8CBB200FDEAF4 /* SingEmailViewModel.swift */,
+			);
+			path = SingIn;
+			sourceTree = "<group>";
+		};
 		30F032F62BE8B5C100FDEAF4 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +91,8 @@
 		30F033012BE8B5C100FDEAF4 /* SwifUIFirebaseGoogleSingIn */ = {
 			isa = PBXGroup;
 			children = (
+				30BE5B082BEABD8900B00862 /* SingIn */,
+				30BE5B052BEABC8000B00862 /* Extention */,
 				30F033312BE8F46F00FDEAF4 /* Settings */,
 				30F0331A2BE8CA1D00FDEAF4 /* Authentication */,
 				30F033062BE8B5C200FDEAF4 /* Assets.xcassets */,
@@ -102,8 +123,6 @@
 			isa = PBXGroup;
 			children = (
 				30F0331B2BE8CA5900FDEAF4 /* AuthenticationView.swift */,
-				30F0331D2BE8CB8F00FDEAF4 /* SingInEmailView.swift */,
-				30F0331F2BE8CBB200FDEAF4 /* SingEmailViewModel.swift */,
 				30F033212BE8CEE100FDEAF4 /* AuthenticationManager.swift */,
 			);
 			path = Authentication;
@@ -201,6 +220,7 @@
 				30F033032BE8B5C100FDEAF4 /* SwifUIFirebaseGoogleSingInApp.swift in Sources */,
 				30F033202BE8CBB200FDEAF4 /* SingEmailViewModel.swift in Sources */,
 				30F033302BE8F03E00FDEAF4 /* RootView.swift in Sources */,
+				30BE5B072BEABC9A00B00862 /* BluButtonView.swift in Sources */,
 				30F033222BE8CEE100FDEAF4 /* AuthenticationManager.swift in Sources */,
 				30F0331C2BE8CA5900FDEAF4 /* AuthenticationView.swift in Sources */,
 				30F0331E2BE8CB8F00FDEAF4 /* SingInEmailView.swift in Sources */,

@@ -25,11 +25,6 @@ final class AuthenticationManager {
     static let shared = AuthenticationManager()
     private init() {}
     
-    @discardableResult
-    func createUser(email: String, password: String) async throws -> AuthDataResultModel {
-        let authDataResult = try await Auth.auth().createUser(withEmail: email, password: password)
-        return AuthDataResultModel(user: authDataResult.user)
-    }
     
     func getAuthenticatedUser() throws -> AuthDataResultModel {
         guard let user = Auth.auth().currentUser else {
@@ -40,6 +35,18 @@ final class AuthenticationManager {
     
     func singOut() throws{
         try Auth.auth().signOut()
+    }
+    
+   
+}
+
+//MARK: - SingIn Email
+extension AuthenticationManager {
+    
+    @discardableResult
+    func createUser(email: String, password: String) async throws -> AuthDataResultModel {
+        let authDataResult = try await Auth.auth().createUser(withEmail: email, password: password)
+        return AuthDataResultModel(user: authDataResult.user)
     }
     
     @discardableResult
@@ -66,5 +73,20 @@ final class AuthenticationManager {
         }
         
         try await user.updatePassword(to: password)
+    }
+}
+
+//MARK: - SingIn SSO
+extension AuthenticationManager{
+    
+    @discardableResult
+    func singInWhithGoogle(tokens: GoogleSignInresultModel) async throws -> AuthDataResultModel {
+        let credential = GoogleAuthProvider.credential(withIDToken: tokens.idToken, accessToken: tokens.accessToken)
+        return try await singIn(credential: credential)
+    }
+    
+    func singIn(credential: AuthCredential) async throws -> AuthDataResultModel {
+        let authDateResult = try await Auth.auth().signIn(with: credential)
+        return AuthDataResultModel(user: authDateResult.user)
     }
 }

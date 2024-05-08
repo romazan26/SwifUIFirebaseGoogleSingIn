@@ -13,6 +13,7 @@ struct AuthenticationView: View {
     
     @StateObject private var viewModel = AutheticationViewModel()
     @Binding var showSingInView: Bool
+    @State var showProgress = false
     
     var body: some View {
         VStack{
@@ -28,15 +29,18 @@ struct AuthenticationView: View {
                     .cornerRadius(10)
             }
             GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(scheme: .dark, style: .wide, state: .normal), action: {
+                showProgress = true
                 Task{
                     do{
                         try await viewModel.signInGoogle()
                         showSingInView = false
+                        showProgress = false
                     }catch {
                         print(error)
                     }
                 }
             })
+            if showProgress{ ProgressView() }
             Spacer()
         }
         .padding()

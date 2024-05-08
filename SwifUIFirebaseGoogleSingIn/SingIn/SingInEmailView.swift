@@ -11,6 +11,7 @@ struct SingInEmailView: View {
     
     @Binding var showSingInView: Bool
     @StateObject private var viewModel = SingEmailViewModel()
+    @State var showProgress = false
     
     var body: some View {
         VStack {
@@ -23,46 +24,35 @@ struct SingInEmailView: View {
                 .background(Color.gray.opacity(0.4))
                 .cornerRadius(10)
             
-            Button(action: {
+            BluButtonView(action: {
+                showProgress = true
                 Task{
                     do {
                         try await viewModel.singIn()
                         showSingInView = false
+                        showProgress = false
                     }catch {
                         print(error)
                     }
                 }
-                
-            }, label: {
-                Text("SingIn")
-                    .font(.headline)
-                    .foregroundStyle(.white)
-                    .frame(height: 55)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-            })
-            
-            Button(action: {
+            }, labelText: "SingIn")
+
+            BluButtonView(action: {
                 Task{
+                    showProgress = true
                     do {
                         try await viewModel.createUser()
                         showSingInView = false
+                        showProgress = false
                     }catch {
                         print(error)
                     }
                 }
-                
-            }, label: {
-                Text("Create new user")
-                    .font(.headline)
-                    .foregroundStyle(.white)
-                    .frame(height: 55)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-            })
+            }, labelText: "Create new user")
+
+            if showProgress{ ProgressView() }
         }
+        
         .padding()
         .navigationTitle("Sing with Email")
     }

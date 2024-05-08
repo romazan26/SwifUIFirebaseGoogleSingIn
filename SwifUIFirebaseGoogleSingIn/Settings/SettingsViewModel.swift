@@ -12,6 +12,14 @@ final class SettingsViewModel: ObservableObject {
     
     @Published var newPassword = ""
     @Published var newEmail = ""
+    
+    @Published var authProviders: [AuthProviderOption] = []
+    
+    func loadAuthProviders() {
+        if let provider = try? AuthenticationManager.shared.getProviders(){
+            authProviders = provider
+        }
+    }
 
 
     func logOut() throws {

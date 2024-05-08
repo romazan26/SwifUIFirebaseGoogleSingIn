@@ -30,50 +30,56 @@ struct SettingsView: View {
                 }
             }, labelText: "Log out")
             Divider().foregroundStyle(.red).padding(.vertical)
-            BluButtonView(action: {
-                Task {
-                    do {
-                        try await viewModel.resetPassword()
-                        print("password reset")
-                    }catch {
-                      print(error)
-                    }
-                }
-            }, labelText: "Password reset")
             
-            //MARK: - Update Password group
-            SecureField("new password", text: $viewModel.newPassword)
-                .textFieldStyle(.roundedBorder)
-            BluButtonView(action: {
+            if viewModel.authProviders.contains(.email){
+                BluButtonView(action: {
+                    Task {
+                        do {
+                            try await viewModel.resetPassword()
+                            print("password reset")
+                        }catch {
+                            print(error)
+                        }
+                    }
+                }, labelText: "Password reset")
                 
-                Task {
-                    do {
-                        try await viewModel.updatePassword()
-                        print("Passwod update")
-                    }catch {
-                      print(error)
+                //MARK: - Update Password group
+                SecureField("new password", text: $viewModel.newPassword)
+                    .textFieldStyle(.roundedBorder)
+                BluButtonView(action: {
+                    
+                    Task {
+                        do {
+                            try await viewModel.updatePassword()
+                            print("Passwod update")
+                        }catch {
+                            print(error)
+                        }
                     }
-                }
-            }, labelText: "Passwod update")
-            
-            //MARK: - Update Email group
-            TextField("new email", text: $viewModel.newEmail)
-                .textFieldStyle(.roundedBorder)
-            BluButtonView(action: {
+                }, labelText: "Passwod update")
                 
-                Task {
-                    do {
-                        try await viewModel.updateEmail()
-                        print("email update")
-                    }catch {
-                      print(error)
+                //MARK: - Update Email group
+                TextField("new email", text: $viewModel.newEmail)
+                    .textFieldStyle(.roundedBorder)
+                BluButtonView(action: {
+                    
+                    Task {
+                        do {
+                            try await viewModel.updateEmail()
+                            print("email update")
+                        }catch {
+                            print(error)
+                        }
                     }
-                }
-            }, labelText: "Email update")
-
-           
+                }, labelText: "Email update")
+                
+            }
             
-        }.padding()
+        }
+        .onAppear(perform: {
+            viewModel.loadAuthProviders()
+        })
+        .padding()
     }
 }
 

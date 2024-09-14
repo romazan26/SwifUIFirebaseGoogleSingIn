@@ -14,7 +14,7 @@ struct RootView: View {
         ZStack{
             if !showSingInView {
                 NavigationStack{
-                    SettingsView(showSingInview: $showSingInView)
+                    MainView(showSingInview: $showSingInView)
                 }
             }
         }

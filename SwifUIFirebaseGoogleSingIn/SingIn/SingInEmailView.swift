@@ -14,47 +14,83 @@ struct SingInEmailView: View {
     @State var showProgress = false
     
     var body: some View {
-        VStack {
-            TextField("Email...", text: $viewModel.email)
-                .padding()
-                .background(Color.gray.opacity(0.4))
-                .cornerRadius(10)
-            SecureField("Password...", text: $viewModel.password)
-                .padding()
-                .background(Color.gray.opacity(0.4))
-                .cornerRadius(10)
-            
-            BluButtonView(action: {
-                showProgress = true
-                Task{
-                    do {
-                        try await viewModel.singIn()
-                        showSingInView = false
-                        showProgress = false
-                    }catch {
-                        print(error)
-                    }
+        ZStack {
+            Color.main.ignoresSafeArea()
+            VStack {
+                //MARK: - Logo image
+                Image(systemName: "envelope.fill")
+                    .resizable()
+                    .frame(width: 180, height: 150)
+                    .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/, radius: 5, x: 4, y: 4)
+                    .padding(.vertical)
+                //MARK: - Group of TextField
+                VStack{
+                    TextField("Email...", text: $viewModel.email)
+                        .padding()
+                        .background {
+                            ZStack{
+                                Color.gray
+                                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                    .foregroundStyle(.white)
+                                    .blur(radius: 4)
+                            }
+                        }
+                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                        .shadow(color: .main, radius: 20, x: 20, y: 20)
+                        .shadow(color: .white, radius: 15, x: -5, y: -5)
+                    SecureField("Password...", text: $viewModel.password)
+                        .padding()
+                        .background {
+                            ZStack{
+                                Color.gray
+                                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                    .foregroundStyle(.white)
+                                    .blur(radius: 4)
+                            }
+                        }
+                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                        .shadow(color: .main, radius: 20, x: 20, y: 20)
+                        .shadow(color: .white, radius: 15, x: -5, y: -5)
                 }
-            }, labelText: "SingIn")
-
-            BluButtonView(action: {
-                Task{
-                    showProgress = true
-                    do {
-                        try await viewModel.createUser()
-                        showSingInView = false
-                        showProgress = false
-                    }catch {
-                        print(error)
-                    }
+                
+                //MARK: - Group of button
+                VStack{
+                    CustomShadowButtonView(action: {
+                        showProgress = true
+                        Task{
+                            do {
+                                try await viewModel.singIn()
+                                showSingInView = false
+                                showProgress = false
+                            }catch {
+                                print(error)
+                            }
+                        }
+                    }, labelText: "SingIn")
+                    
+                    
+                    CustomShadowButtonView(action: {
+                        Task{
+                            showProgress = true
+                            do {
+                                try await viewModel.createUser()
+                                showSingInView = false
+                                showProgress = false
+                            }catch {
+                                print(error)
+                            }
+                        }
+                    }, labelText: "Create new user")
                 }
-            }, labelText: "Create new user")
-
-            if showProgress{ ProgressView() }
-        }
-        
-        .padding()
+                .padding(.top, 30)
+                
+                //MARK: - ProgressViiew
+                if showProgress{ ProgressView() }
+                Spacer()
+            }
+            .padding()
         .navigationTitle("Sing with Email")
+        }
     }
 }
 

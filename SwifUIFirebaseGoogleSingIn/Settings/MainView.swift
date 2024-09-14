@@ -15,71 +15,86 @@ struct MainView: View {
     
 
     var body: some View {
-        VStack {
-            Text("You have logged in")
-                .font(.largeTitle)
-                .bold()
-            CustomShadowButtonView(action: {
-                Task {
-                    do {
-                        try viewModel.logOut()
-                        showSingInview = true
-                    }catch {
-                      print(error)
-                    }
-                }
-            }, labelText: "Log out")
-            Divider().foregroundStyle(.red).padding(.vertical)
+        ZStack {
+            //MARK: - Background
+            Color.main.ignoresSafeArea()
             
-            if viewModel.authProviders.contains(.email){
-                CustomShadowButtonView(action: {
-                    Task {
-                        do {
-                            try await viewModel.resetPassword()
-                            print("password reset")
-                        }catch {
-                            print(error)
-                        }
-                    }
-                }, labelText: "Password reset")
+            //MARK: - Main stack
+            VStack(spacing: 20) {
+                Spacer()
+                Text("You have logged in")
+                    .font(.largeTitle)
+                    .bold()
                 
-                //MARK: - Update Password group
-                SecureField("new password", text: $viewModel.newPassword)
-                    .textFieldStyle(.roundedBorder)
+                //MARK: - Log out button
                 CustomShadowButtonView(action: {
-                    
                     Task {
                         do {
-                            try await viewModel.updatePassword()
-                            print("Passwod update")
+                            try viewModel.logOut()
+                            showSingInview = true
                         }catch {
-                            print(error)
+                          print(error)
                         }
                     }
-                }, labelText: "Passwod update")
+                }, labelText: "Log out")
+                Spacer()
                 
-                //MARK: - Update Email group
-                TextField("new email", text: $viewModel.newEmail)
-                    .textFieldStyle(.roundedBorder)
-                CustomShadowButtonView(action: {
-                    
-                    Task {
-                        do {
-                            try await viewModel.updateEmail()
-                            print("email update")
-                        }catch {
-                            print(error)
+                //MARK: - if log in whith email
+                if viewModel.authProviders.contains(.email){
+                    Divider().foregroundStyle(.red).padding(.vertical)
+                    Text("Settings")
+                        .font(.title)
+                        .bold()
+                    //MARK: - password reset button
+                    CustomShadowButtonView(action: {
+                        Task {
+                            do {
+                                try await viewModel.resetPassword()
+                                print("password reset")
+                            }catch {
+                                print(error)
+                            }
                         }
-                    }
-                }, labelText: "Email update")
+                    }, labelText: "Password reset")
+                    
+                    //MARK: - Update Password group
+                    SecureField("new password", text: $viewModel.newPassword)
+                        .textFieldStyle(.roundedBorder)
+                    CustomShadowButtonView(action: {
+                        
+                        Task {
+                            do {
+                                try await viewModel.updatePassword()
+                                print("Password update")
+                            }catch {
+                                print(error)
+                            }
+                        }
+                    }, labelText: "Passwod update")
+                    
+                    //MARK: - Update Email group
+                    TextField("new email", text: $viewModel.newEmail)
+                        .textFieldStyle(.roundedBorder)
+                    CustomShadowButtonView(action: {
+                        
+                        Task {
+                            do {
+                                try await viewModel.updateEmail()
+                                print("email update")
+                            }catch {
+                                print(error)
+                            }
+                        }
+                    }, labelText: "Email update")
+                    
+                }
                 
             }
-            
-        }
-        .onAppear(perform: {
-            viewModel.loadAuthProviders()
-        })
+            .onAppear(perform: {
+                viewModel.loadAuthProviders()
+            })
         .padding()
+        }
     }
 }
 

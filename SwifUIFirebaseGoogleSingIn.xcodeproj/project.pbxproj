@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		30BE5B072BEABC9A00B00862 /* BluButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BE5B062BEABC9A00B00862 /* BluButtonView.swift */; };
+		30BE5B072BEABC9A00B00862 /* CustomShadowButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BE5B062BEABC9A00B00862 /* CustomShadowButtonView.swift */; };
 		30BE5B0B2BEB512C00B00862 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 30BE5B0A2BEB512C00B00862 /* GoogleSignIn */; };
 		30BE5B0D2BEB512C00B00862 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 30BE5B0C2BEB512C00B00862 /* GoogleSignInSwift */; };
 		30BE5B102BEB521300B00862 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30BE5B0F2BEB521300B00862 /* GoogleService-Info.plist */; };
@@ -25,12 +25,12 @@
 		30F033202BE8CBB200FDEAF4 /* SingEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0331F2BE8CBB200FDEAF4 /* SingEmailViewModel.swift */; };
 		30F033222BE8CEE100FDEAF4 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F033212BE8CEE100FDEAF4 /* AuthenticationManager.swift */; };
 		30F033302BE8F03E00FDEAF4 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0332F2BE8F03E00FDEAF4 /* RootView.swift */; };
-		30F033332BE907C900FDEAF4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F033322BE907C900FDEAF4 /* SettingsView.swift */; };
+		30F033332BE907C900FDEAF4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F033322BE907C900FDEAF4 /* MainView.swift */; };
 		30F033352BE9081B00FDEAF4 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F033342BE9081B00FDEAF4 /* SettingsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		30BE5B062BEABC9A00B00862 /* BluButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluButtonView.swift; sourceTree = "<group>"; };
+		30BE5B062BEABC9A00B00862 /* CustomShadowButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShadowButtonView.swift; sourceTree = "<group>"; };
 		30BE5B0E2BEB51AA00B00862 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		30BE5B0F2BEB521300B00862 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		30BE5B112BEB54B700B00862 /* AutheticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutheticationViewModel.swift; sourceTree = "<group>"; };
@@ -45,7 +45,7 @@
 		30F0331F2BE8CBB200FDEAF4 /* SingEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingEmailViewModel.swift; sourceTree = "<group>"; };
 		30F033212BE8CEE100FDEAF4 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		30F0332F2BE8F03E00FDEAF4 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		30F033322BE907C900FDEAF4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		30F033322BE907C900FDEAF4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		30F033342BE9081B00FDEAF4 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,7 +68,7 @@
 		30BE5B052BEABC8000B00862 /* Extention */ = {
 			isa = PBXGroup;
 			children = (
-				30BE5B062BEABC9A00B00862 /* BluButtonView.swift */,
+				30BE5B062BEABC9A00B00862 /* CustomShadowButtonView.swift */,
 				30BE5B132BEB560E00B00862 /* Utilities.swift */,
 				30BE5B152BEB650F00B00862 /* SignInGoogleHelper.swift */,
 			);
@@ -146,7 +146,7 @@
 		30F033312BE8F46F00FDEAF4 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				30F033322BE907C900FDEAF4 /* SettingsView.swift */,
+				30F033322BE907C900FDEAF4 /* MainView.swift */,
 				30F033342BE9081B00FDEAF4 /* SettingsViewModel.swift */,
 			);
 			path = Settings;
@@ -234,13 +234,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30F033332BE907C900FDEAF4 /* SettingsView.swift in Sources */,
+				30F033332BE907C900FDEAF4 /* MainView.swift in Sources */,
 				30F033032BE8B5C100FDEAF4 /* SwifUIFirebaseGoogleSingInApp.swift in Sources */,
 				30BE5B142BEB560E00B00862 /* Utilities.swift in Sources */,
 				30F033202BE8CBB200FDEAF4 /* SingEmailViewModel.swift in Sources */,
 				30BE5B162BEB650F00B00862 /* SignInGoogleHelper.swift in Sources */,
 				30F033302BE8F03E00FDEAF4 /* RootView.swift in Sources */,
-				30BE5B072BEABC9A00B00862 /* BluButtonView.swift in Sources */,
+				30BE5B072BEABC9A00B00862 /* CustomShadowButtonView.swift in Sources */,
 				30BE5B122BEB54B700B00862 /* AutheticationViewModel.swift in Sources */,
 				30F033222BE8CEE100FDEAF4 /* AuthenticationManager.swift in Sources */,
 				30F0331C2BE8CA5900FDEAF4 /* AuthenticationView.swift in Sources */,

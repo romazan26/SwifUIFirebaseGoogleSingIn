@@ -29,7 +29,7 @@ struct CustomShadowButtonView: View {
                 }
                 .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                 .shadow(color: .main, radius: 20, x: 20, y: 20)
-                .shadow(color: .white, radius: 20, x: -20, y: -20)
+                .shadow(color: .white, radius: 15, x: -5, y: -5)
                 
         })
     }

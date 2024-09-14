@@ -17,17 +17,36 @@ struct AuthenticationView: View {
     
     var body: some View {
         VStack{
+            //MARK: - Logo image
+            Image(systemName: "network.badge.shield.half.filled")
+                .resizable()
+                .frame(width: 150, height: 150)
+                .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/, radius: 5, x: 4, y: 4)
+                .padding(.vertical)
+            
+            //MARK: - Sing in whith email
             NavigationLink {
                 SingInEmailView(showSingInView: $showSingInView)
             } label: {
                 Text("Sing in whith email")
-                    .font(.headline)
-                    .foregroundStyle(.white)
-                    .frame(height: 55)
+                    .font(.system(size: 20, weight: .semibold, design: .rounded))
+                    .foregroundStyle(.black)
+                    .frame(height: 60)
                     .frame(maxWidth: .infinity)
-                    .background(Color.blue)
-                    .cornerRadius(10)
+                    .background {
+                        ZStack{
+                            Color.gray
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .foregroundStyle(.white)
+                                .blur(radius: 4)
+                        }
+                    }
+                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                    .shadow(color: .main, radius: 20, x: 20, y: 20)
+                    .shadow(color: .white, radius: 15, x: -5, y: -5)
             }
+            
+            //MARK: - Sing in whith Googl
             GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(scheme: .dark, style: .wide, state: .normal), action: {
                 showProgress = true
                 Task{
@@ -40,11 +59,15 @@ struct AuthenticationView: View {
                     }
                 }
             })
+            
             if showProgress{ ProgressView() }
             Spacer()
         }
         .padding()
         .navigationTitle("Sing In")
+        .background {
+            Color.main.ignoresSafeArea()
+        }
     }
 }
 

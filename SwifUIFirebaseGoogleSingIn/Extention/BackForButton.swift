@@ -24,7 +24,7 @@ struct BackForButton: View {
                 }
             }
             .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-            .shadow(color: .main, radius: 20, x: 20, y: 20)
+            .shadow(color: .main, radius: 15, x: 10, y: 10)
             .shadow(color: .white, radius: 15, x: -5, y: -5)
     }
 }

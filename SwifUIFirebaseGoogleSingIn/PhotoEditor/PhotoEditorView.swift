@@ -6,18 +6,95 @@
 //
 
 import SwiftUI
+import PhotosUI
+import SwiftyCrop
 
 struct PhotoEditorView: View {
     
     @StateObject var vm = PhotoEditorViewModel()
     
+    
+    
     var body: some View {
-        ZStack {
-            VStack {
-                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            
+            Spacer()
+            //MARK: - Image
+            Image(uiImage: vm.selectedImage ?? UIImage(resource: .no))
+                .resizable()
+                .scaledToFit()
+            Spacer()
+
+                
+            
+            if let selectedImage = vm.selectedImage{
+                //MARK: - Crop button
+                Button {
+                    vm.showAlertMaskShape.toggle()
+                } label: {
+                    BackForButton(labelText: "Crop downloaded image")
+                }
             }
             
+            
+            //MARK: - Selected input data
+            HStack{
+                //MARK: - Library button
+                Button {
+                    vm.sourceType = .photoLibrary
+                    vm.showImagePicker.toggle()
+                } label: {
+                    BackForButton(labelText: "Photo Library")
+                }
+                //MARK: - Camers button
+                Button {
+                    vm.sourceType = .camera
+                    vm.showImagePicker.toggle()
+                } label: {
+                    BackForButton(labelText: "Camera")
+                }
+            }
         }
+        .navigationTitle("Photo editor")
+        
+        //MARK: - Action Sheet choose mask
+        .actionSheet(isPresented: $vm.showAlertMaskShape, content: {
+            ActionSheet(title: Text("Select mask shape"),
+                        message: Text("Choose"), buttons: [
+                            .default(Text("circle"), action: {
+                                vm.maskShape = .circle
+                                vm.showImageCropper.toggle()
+                            }),
+                            .default(Text("square"), action: {
+                                vm.maskShape = .square
+                                vm.showImageCropper.toggle()
+                            }),
+                            .default(Text("rectangle"), action: {
+                                vm.maskShape = .rectangle
+                                vm.showImageCropper.toggle()
+                            })])
+        })
+        
+        //MARK: - Sheet Image Picker
+        .sheet(isPresented: $vm.showImagePicker, content: {
+            ImagePicker(image: $vm.selectedImage, isShown: $vm.showImagePicker, sourceType: vm.sourceType)
+        })
+        
+        //MARK: - Sheet Crop view
+        .fullScreenCover(isPresented: $vm.showImageCropper) {
+            if let selectedImage = vm.selectedImage {
+                SwiftyCropView(
+                    imageToCrop: selectedImage,
+                    maskShape: vm.maskShape,
+                    configuration: vm.configeration
+                ) { croppedImage in
+                    if let croppedImage = croppedImage{
+                        vm.selectedImage = croppedImage
+                    }
+                }
+            }
+        }
+        .padding()
     }
 }
 

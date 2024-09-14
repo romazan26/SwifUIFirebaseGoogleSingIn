@@ -23,6 +23,7 @@ struct PhotoEditorView: View {
             Image(uiImage: vm.selectedImage ?? UIImage(resource: .no))
                 .resizable()
                 .scaledToFit()
+                .cornerRadius(10)
             Spacer()
 
                 
@@ -95,9 +96,27 @@ struct PhotoEditorView: View {
             }
         }
         .padding()
+        .navigationTitle("Photo editor")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar(content: {
+            ToolbarItem(placement: .automatic) {
+                Button(action: {
+                    guard let saveImage = vm.selectedImage else {return}
+                    let imageSaver = ImageSaver()
+                    imageSaver.writeToPhotoAlbum(image: saveImage)
+                }, label: {
+                    HStack {
+                        Image(systemName: "externaldrive.fill.badge.checkmark")
+                        Text("Save")
+                    }.foregroundStyle(.red)
+                })
+            }
+        })
     }
 }
 
 #Preview {
-    PhotoEditorView()
+    NavigationView {
+        PhotoEditorView()
+    }
 }

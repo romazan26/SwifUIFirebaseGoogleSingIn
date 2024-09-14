@@ -13,6 +13,7 @@
 		305283392C95C610004E1ADA /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305283382C95C610004E1ADA /* ImagePicker.swift */; };
 		3052833C2C95E536004E1ADA /* SwiftyCrop in Frameworks */ = {isa = PBXBuildFile; productRef = 3052833B2C95E536004E1ADA /* SwiftyCrop */; };
 		3052833E2C95E567004E1ADA /* CropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3052833D2C95E567004E1ADA /* CropView.swift */; };
+		305283402C9626EC004E1ADA /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3052833F2C9626EB004E1ADA /* ImageSaver.swift */; };
 		30BE5B072BEABC9A00B00862 /* CustomShadowButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BE5B062BEABC9A00B00862 /* CustomShadowButtonView.swift */; };
 		30BE5B0B2BEB512C00B00862 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 30BE5B0A2BEB512C00B00862 /* GoogleSignIn */; };
 		30BE5B0D2BEB512C00B00862 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 30BE5B0C2BEB512C00B00862 /* GoogleSignInSwift */; };
@@ -41,6 +42,7 @@
 		305283362C95A539004E1ADA /* PhotoEditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorViewModel.swift; sourceTree = "<group>"; };
 		305283382C95C610004E1ADA /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		3052833D2C95E567004E1ADA /* CropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropView.swift; sourceTree = "<group>"; };
+		3052833F2C9626EB004E1ADA /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		30BE5B062BEABC9A00B00862 /* CustomShadowButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShadowButtonView.swift; sourceTree = "<group>"; };
 		30BE5B0E2BEB51AA00B00862 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		30BE5B0F2BEB521300B00862 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				30BE5B132BEB560E00B00862 /* Utilities.swift */,
 				30BE5B152BEB650F00B00862 /* SignInGoogleHelper.swift */,
 				305283342C95955C004E1ADA /* BackForButton.swift */,
+				3052833F2C9626EB004E1ADA /* ImageSaver.swift */,
 			);
 			path = Extention;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				30BE5B122BEB54B700B00862 /* AutheticationViewModel.swift in Sources */,
 				30F033222BE8CEE100FDEAF4 /* AuthenticationManager.swift in Sources */,
 				305283372C95A539004E1ADA /* PhotoEditorViewModel.swift in Sources */,
+				305283402C9626EC004E1ADA /* ImageSaver.swift in Sources */,
 				30F0331C2BE8CA5900FDEAF4 /* AuthenticationView.swift in Sources */,
 				30F0331E2BE8CB8F00FDEAF4 /* SingInEmailView.swift in Sources */,
 				305283352C95955C004E1ADA /* BackForButton.swift in Sources */,

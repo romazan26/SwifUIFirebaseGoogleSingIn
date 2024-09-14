@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		305283332C959513004E1ADA /* PhotoEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305283322C959513004E1ADA /* PhotoEditorView.swift */; };
+		305283352C95955C004E1ADA /* BackForButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305283342C95955C004E1ADA /* BackForButton.swift */; };
+		305283372C95A539004E1ADA /* PhotoEditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305283362C95A539004E1ADA /* PhotoEditorViewModel.swift */; };
 		30BE5B072BEABC9A00B00862 /* CustomShadowButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BE5B062BEABC9A00B00862 /* CustomShadowButtonView.swift */; };
 		30BE5B0B2BEB512C00B00862 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 30BE5B0A2BEB512C00B00862 /* GoogleSignIn */; };
 		30BE5B0D2BEB512C00B00862 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 30BE5B0C2BEB512C00B00862 /* GoogleSignInSwift */; };
@@ -26,10 +29,13 @@
 		30F033222BE8CEE100FDEAF4 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F033212BE8CEE100FDEAF4 /* AuthenticationManager.swift */; };
 		30F033302BE8F03E00FDEAF4 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0332F2BE8F03E00FDEAF4 /* RootView.swift */; };
 		30F033332BE907C900FDEAF4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F033322BE907C900FDEAF4 /* MainView.swift */; };
-		30F033352BE9081B00FDEAF4 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F033342BE9081B00FDEAF4 /* SettingsViewModel.swift */; };
+		30F033352BE9081B00FDEAF4 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F033342BE9081B00FDEAF4 /* MainViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		305283322C959513004E1ADA /* PhotoEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorView.swift; sourceTree = "<group>"; };
+		305283342C95955C004E1ADA /* BackForButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackForButton.swift; sourceTree = "<group>"; };
+		305283362C95A539004E1ADA /* PhotoEditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorViewModel.swift; sourceTree = "<group>"; };
 		30BE5B062BEABC9A00B00862 /* CustomShadowButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShadowButtonView.swift; sourceTree = "<group>"; };
 		30BE5B0E2BEB51AA00B00862 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		30BE5B0F2BEB521300B00862 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -46,7 +52,7 @@
 		30F033212BE8CEE100FDEAF4 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		30F0332F2BE8F03E00FDEAF4 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		30F033322BE907C900FDEAF4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		30F033342BE9081B00FDEAF4 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		30F033342BE9081B00FDEAF4 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,12 +71,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		305283312C9594D1004E1ADA /* PhotoEditor */ = {
+			isa = PBXGroup;
+			children = (
+				305283322C959513004E1ADA /* PhotoEditorView.swift */,
+				305283362C95A539004E1ADA /* PhotoEditorViewModel.swift */,
+			);
+			path = PhotoEditor;
+			sourceTree = "<group>";
+		};
 		30BE5B052BEABC8000B00862 /* Extention */ = {
 			isa = PBXGroup;
 			children = (
 				30BE5B062BEABC9A00B00862 /* CustomShadowButtonView.swift */,
 				30BE5B132BEB560E00B00862 /* Utilities.swift */,
 				30BE5B152BEB650F00B00862 /* SignInGoogleHelper.swift */,
+				305283342C95955C004E1ADA /* BackForButton.swift */,
 			);
 			path = Extention;
 			sourceTree = "<group>";
@@ -104,10 +120,11 @@
 		30F033012BE8B5C100FDEAF4 /* SwifUIFirebaseGoogleSingIn */ = {
 			isa = PBXGroup;
 			children = (
+				305283312C9594D1004E1ADA /* PhotoEditor */,
 				30BE5B0E2BEB51AA00B00862 /* Info.plist */,
 				30BE5B082BEABD8900B00862 /* SingIn */,
 				30BE5B052BEABC8000B00862 /* Extention */,
-				30F033312BE8F46F00FDEAF4 /* Settings */,
+				30F033312BE8F46F00FDEAF4 /* Main */,
 				30F0331A2BE8CA1D00FDEAF4 /* Authentication */,
 				30F033062BE8B5C200FDEAF4 /* Assets.xcassets */,
 				30BE5B0F2BEB521300B00862 /* GoogleService-Info.plist */,
@@ -143,13 +160,13 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
-		30F033312BE8F46F00FDEAF4 /* Settings */ = {
+		30F033312BE8F46F00FDEAF4 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				30F033322BE907C900FDEAF4 /* MainView.swift */,
-				30F033342BE9081B00FDEAF4 /* SettingsViewModel.swift */,
+				30F033342BE9081B00FDEAF4 /* MainViewModel.swift */,
 			);
-			path = Settings;
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,13 +256,16 @@
 				30BE5B142BEB560E00B00862 /* Utilities.swift in Sources */,
 				30F033202BE8CBB200FDEAF4 /* SingEmailViewModel.swift in Sources */,
 				30BE5B162BEB650F00B00862 /* SignInGoogleHelper.swift in Sources */,
+				305283332C959513004E1ADA /* PhotoEditorView.swift in Sources */,
 				30F033302BE8F03E00FDEAF4 /* RootView.swift in Sources */,
 				30BE5B072BEABC9A00B00862 /* CustomShadowButtonView.swift in Sources */,
 				30BE5B122BEB54B700B00862 /* AutheticationViewModel.swift in Sources */,
 				30F033222BE8CEE100FDEAF4 /* AuthenticationManager.swift in Sources */,
+				305283372C95A539004E1ADA /* PhotoEditorViewModel.swift in Sources */,
 				30F0331C2BE8CA5900FDEAF4 /* AuthenticationView.swift in Sources */,
 				30F0331E2BE8CB8F00FDEAF4 /* SingInEmailView.swift in Sources */,
-				30F033352BE9081B00FDEAF4 /* SettingsViewModel.swift in Sources */,
+				305283352C95955C004E1ADA /* BackForButton.swift in Sources */,
+				30F033352BE9081B00FDEAF4 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

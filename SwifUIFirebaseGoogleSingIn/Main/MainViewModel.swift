@@ -8,7 +8,7 @@
 import Foundation
 
 
-final class SettingsViewModel: ObservableObject {
+final class MainViewModel: ObservableObject {
     
     @Published var newPassword = ""
     @Published var newEmail = ""

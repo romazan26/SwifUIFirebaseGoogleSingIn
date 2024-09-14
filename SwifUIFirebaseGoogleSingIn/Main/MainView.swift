@@ -10,7 +10,7 @@ import SwiftUI
 
 
 struct MainView: View {
-    @StateObject var viewModel = SettingsViewModel()
+    @StateObject var viewModel = MainViewModel()
     @Binding var showSingInview: Bool
     
 
@@ -37,6 +37,12 @@ struct MainView: View {
                         }
                     }
                 }, labelText: "Log out")
+                NavigationLink {
+                    PhotoEditorView()
+                } label: {
+                    BackForButton(labelText: "Photo Editor")
+                }
+
                 Spacer()
                 
                 //MARK: - if log in whith email

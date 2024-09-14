@@ -9,6 +9,7 @@ import SwiftUI
 import PhotosUI
 import SwiftyCrop
 
+
 struct PhotoEditorView: View {
     
     @StateObject var vm = PhotoEditorViewModel()
@@ -24,16 +25,38 @@ struct PhotoEditorView: View {
                 .resizable()
                 .scaledToFit()
                 .cornerRadius(10)
-            Spacer()
-
-                
             
+            Spacer()
+            
+            //MARK: - if we have image
             if let selectedImage = vm.selectedImage{
-                //MARK: - Crop button
-                Button {
-                    vm.showAlertMaskShape.toggle()
-                } label: {
-                    BackForButton(labelText: "Crop downloaded image")
+                VStack {
+                    HStack{
+                        Text("Intensity")
+                        Slider(value: $vm.intensity)
+                            .onChange(of: vm.intensity) {
+                                vm.applyProcessing()
+                            }
+                    }
+                    HStack{
+                        //MARK: - Crop button
+                        Button {
+                            vm.showAlertMaskShape.toggle()
+                        } label: {
+                            BackForButton(labelText: "Crop image")
+                        }
+                        //MARK: - Effect button
+                        Button {
+                            // vm.showAlertMaskShape.toggle()
+                        } label: {
+                            BackForButton(labelText: "Choose effect")
+                        }
+                    }
+                }
+                .padding()
+                .background {
+                    Color.black.opacity(0.2)
+                        .cornerRadius(20)
                 }
             }
             
@@ -57,7 +80,9 @@ struct PhotoEditorView: View {
             }
         }
         .navigationTitle("Photo editor")
-        
+        .onChange(of: vm.selectedImage, {
+            vm.loadImage()
+        })
         //MARK: - Action Sheet choose mask
         .actionSheet(isPresented: $vm.showAlertMaskShape, content: {
             ActionSheet(title: Text("Select mask shape"),

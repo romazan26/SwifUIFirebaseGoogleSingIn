@@ -9,7 +9,7 @@ import SwiftUI
 
 
 
-struct SettingsView: View {
+struct MainView: View {
     @StateObject var viewModel = SettingsViewModel()
     @Binding var showSingInview: Bool
     
@@ -19,7 +19,7 @@ struct SettingsView: View {
             Text("You have logged in")
                 .font(.largeTitle)
                 .bold()
-            BluButtonView(action: {
+            CustomShadowButtonView(action: {
                 Task {
                     do {
                         try viewModel.logOut()
@@ -32,7 +32,7 @@ struct SettingsView: View {
             Divider().foregroundStyle(.red).padding(.vertical)
             
             if viewModel.authProviders.contains(.email){
-                BluButtonView(action: {
+                CustomShadowButtonView(action: {
                     Task {
                         do {
                             try await viewModel.resetPassword()
@@ -46,7 +46,7 @@ struct SettingsView: View {
                 //MARK: - Update Password group
                 SecureField("new password", text: $viewModel.newPassword)
                     .textFieldStyle(.roundedBorder)
-                BluButtonView(action: {
+                CustomShadowButtonView(action: {
                     
                     Task {
                         do {
@@ -61,7 +61,7 @@ struct SettingsView: View {
                 //MARK: - Update Email group
                 TextField("new email", text: $viewModel.newEmail)
                     .textFieldStyle(.roundedBorder)
-                BluButtonView(action: {
+                CustomShadowButtonView(action: {
                     
                     Task {
                         do {
@@ -84,5 +84,5 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView(showSingInview: .constant(false))
+    MainView(showSingInview: .constant(false))
 }

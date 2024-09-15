@@ -63,8 +63,8 @@ struct PhotoEditorView: View {
                             BackForButton(labelText: "Effect")
                         }
                         //MARK: - Pencil button
-                        Button {
-                            vm.showPencilView.toggle()
+                        NavigationLink {
+                            PencilView(vm: vm, image: vm.modifiedImage ?? UIImage(resource: .no))
                         } label: {
                             BackForButton(labelText: "Pencil")
                         }
@@ -128,13 +128,7 @@ struct PhotoEditorView: View {
                                 vm.maskShape = .rectangle
                                 vm.showImageCropper.toggle()
                             })])
-        })
-        
-        //MARK: - Sheet pencil view
-        .sheet(isPresented: $vm.showPencilView, content: {
-            PencilView( image: vm.modifiedImage ?? UIImage(resource: .no))
-        })
-        
+        })        
         //MARK: - Sheet Image Picker
         .sheet(isPresented: $vm.showImagePicker, content: {
             ImagePicker(image: $vm.selectedImage, isShown: $vm.showImagePicker, sourceType: vm.sourceType)

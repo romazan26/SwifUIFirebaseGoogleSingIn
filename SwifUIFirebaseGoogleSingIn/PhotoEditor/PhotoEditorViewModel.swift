@@ -11,6 +11,7 @@ import SwiftUI
 import SwiftyCrop
 import CoreImage
 import CoreImage.CIFilterBuiltins
+import PencilKit
 
 
 final class PhotoEditorViewModel: ObservableObject{
@@ -25,11 +26,27 @@ final class PhotoEditorViewModel: ObservableObject{
     @Published var showAlertMaskShape = false
     @Published var showImageCropper = false
     @Published var showChooseFilter = false
-    @Published var showPencilView = false
     
     @Published var intensity = 0.5
     @Published var currentFilter: CIFilter = CIFilter.sepiaTone()
     let context = CIContext()
+    
+    @Published var canvasView = PKCanvasView()
+    @Published var toolPicker = PKToolPicker()
+    @Published var textBoxes: [TextBox] = []
+    @Published var addNewbox = false
+    @Published var currentIndex : Int = 0
+    
+    
+    //MARK: - Add text on image func
+    func cancelTextView(){
+        toolPicker.setVisible(true, forFirstResponder: canvasView)
+        canvasView.becomeFirstResponder()
+        withAnimation {
+            addNewbox = false
+        }
+        textBoxes.removeLast()
+    }
     
     //MARK: - Crop configuration
     let configeration = SwiftyCropConfiguration(maxMagnificationScale: 4.0,

@@ -14,12 +14,18 @@ struct PencilView: View {
     
     @State var image: UIImage
     
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         ZStack {
             //MARK: - Pencil kit
             ZStack {
                 GeometryReader{ proxy in
+                    
                     let size = proxy.frame(in: .global).size
+                    
+                    
+                    
                         ZStack {
                             PencilKitview(toolPicker: $vm.toolPicker, rect: size, pencilKitCanvasView: $vm.canvasView, imageData: $image)
                             
@@ -39,6 +45,11 @@ struct PencilView: View {
                                     }))
                             }
                         }
+                        .onAppear(perform: {
+                            DispatchQueue.main.async {
+                                vm.rect = proxy.frame(in: .global)
+                            }
+                        })
                 }
                 
                     
@@ -89,9 +100,12 @@ struct PencilView: View {
         .toolbar(content: {
             ToolbarItem(placement: .navigationBarTrailing) {
                 //MARK: - Save button
-                Button("Save") {
-                    //action
-                }
+                Button(action: {
+                    vm.saveImagePencli()
+                    dismiss()
+                }, label: {
+                    Text("Save").foregroundStyle(.red)
+                })
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 //MARK: - plus button

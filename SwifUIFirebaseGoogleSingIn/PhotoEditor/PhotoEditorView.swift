@@ -13,6 +13,7 @@ import SwiftyCrop
 struct PhotoEditorView: View {
     
     @StateObject var vm = PhotoEditorViewModel()
+    @Environment(\.dismiss) var dismiss
     
     
     
@@ -64,7 +65,7 @@ struct PhotoEditorView: View {
                         }
                         //MARK: - Pencil button
                         NavigationLink {
-                            PencilView(vm: vm, image: vm.modifiedImage ?? UIImage(resource: .no))
+                            PencilView(vm: vm,  image: vm.modifiedImage ?? UIImage(resource: .no))
                         } label: {
                             BackForButton(labelText: "Pencil")
                         }
@@ -158,6 +159,7 @@ struct PhotoEditorView: View {
                     guard let saveImage = vm.modifiedImage else {return}
                     let imageSaver = ImageSaver()
                     imageSaver.writeToPhotoAlbum(image: saveImage)
+                    dismiss()
                 }, label: {
                     HStack {
                         Image(systemName: "externaldrive.fill.badge.checkmark")

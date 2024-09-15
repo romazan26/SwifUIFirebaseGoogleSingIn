@@ -16,5 +16,5 @@ struct TextBox: Identifiable{
     
     var offset: CGSize = .zero
     var lastOffSet: CGSize = .zero
-    var textColor: Color = .black
+    var textColor: Color = .white
 }

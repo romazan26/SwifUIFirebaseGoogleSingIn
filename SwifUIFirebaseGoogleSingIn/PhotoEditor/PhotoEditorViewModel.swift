@@ -36,6 +36,7 @@ final class PhotoEditorViewModel: ObservableObject{
     @Published var textBoxes: [TextBox] = []
     @Published var addNewbox = false
     @Published var currentIndex : Int = 0
+    @Published var rect: CGRect = .zero
     
     
     //MARK: - Add text on image func
@@ -46,6 +47,17 @@ final class PhotoEditorViewModel: ObservableObject{
             addNewbox = false
         }
         textBoxes.removeLast()
+    }
+    func saveImagePencli(){
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 1)
+        canvasView.drawHierarchy(in: CGRect(origin: .zero, size: rect.size), afterScreenUpdates: true)
+        let generatingImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        if let image = generatingImage{
+            modifiedImage = image
+            print("succes...")
+        }
     }
     
     //MARK: - Crop configuration

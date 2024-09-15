@@ -20,12 +20,19 @@ struct PencilView: View {
         ZStack {
             //MARK: - Pencil kit
             ZStack {
-                GeometryReader{ proxy in
+                GeometryReader{ proxy -> AnyView in
                     
                     let size = proxy.frame(in: .global).size
+                        
+                            DispatchQueue.main.async {
+                                if vm.rect == .zero{
+                                    vm.rect = proxy.frame(in: .global)
+                                }
+                                
+                            }
+                        
                     
-                    
-                    
+                    return AnyView(
                         ZStack {
                             PencilKitview(toolPicker: $vm.toolPicker, rect: size, pencilKitCanvasView: $vm.canvasView, imageData: $image)
                             
@@ -45,11 +52,8 @@ struct PencilView: View {
                                     }))
                             }
                         }
-                        .onAppear(perform: {
-                            DispatchQueue.main.async {
-                                vm.rect = proxy.frame(in: .global)
-                            }
-                        })
+                        )
+                        
                 }
                 
                     

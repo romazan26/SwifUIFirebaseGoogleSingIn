@@ -21,10 +21,21 @@ struct PhotoEditorView: View {
             
             Spacer()
             //MARK: - Image
-            Image(uiImage: vm.selectedImage ?? UIImage(resource: .no))
-                .resizable()
-                .scaledToFit()
+            VStack {
+                Text("Original")
+                Image(uiImage: vm.selectedImage ?? UIImage(resource: .no))
+                    .resizable()
+                    .scaledToFit()
                 .cornerRadius(10)
+            }
+            
+            VStack {
+                Text("Modified")
+                Image(uiImage: vm.modifiedImage ?? UIImage(resource: .no))
+                    .resizable()
+                    .scaledToFit()
+                .cornerRadius(10)
+            }
             
             Spacer()
             
@@ -43,13 +54,19 @@ struct PhotoEditorView: View {
                         Button {
                             vm.showAlertMaskShape.toggle()
                         } label: {
-                            BackForButton(labelText: "Crop image")
+                            BackForButton(labelText: "Crop")
                         }
                         //MARK: - Effect button
                         Button {
-                            // vm.showAlertMaskShape.toggle()
+                            vm.showChooseFilter.toggle()
                         } label: {
-                            BackForButton(labelText: "Choose effect")
+                            BackForButton(labelText: "Effect")
+                        }
+                        //MARK: - Pencil button
+                        Button {
+                            vm.showPencilView.toggle()
+                        } label: {
+                            BackForButton(labelText: "Pencil")
                         }
                     }
                 }
@@ -83,6 +100,18 @@ struct PhotoEditorView: View {
         .onChange(of: vm.selectedImage, {
             vm.loadImage()
         })
+        
+        //MARK: - Confirmation Dialog choose filter
+        .confirmationDialog("Selected afilter", isPresented: $vm.showChooseFilter){
+            Button("Crystallize") {vm.setFilter(.crystallize())}
+            Button("Edges") {vm.setFilter(.edges())}
+            Button("GaussianBlur") {vm.setFilter(.gaussianBlur())}
+            Button("Pixellate") {vm.setFilter(.pixellate())}
+            Button("sepiaTone") {vm.setFilter(.sepiaTone())}
+            Button("UnsharpMask") {vm.setFilter(.unsharpMask())}
+            Button("Cancel", role: .cancel) {}
+        }
+        
         //MARK: - Action Sheet choose mask
         .actionSheet(isPresented: $vm.showAlertMaskShape, content: {
             ActionSheet(title: Text("Select mask shape"),
@@ -101,6 +130,11 @@ struct PhotoEditorView: View {
                             })])
         })
         
+        //MARK: - Sheet pencil view
+        .sheet(isPresented: $vm.showPencilView, content: {
+            PencilView( image: vm.modifiedImage ?? UIImage(resource: .no))
+        })
+        
         //MARK: - Sheet Image Picker
         .sheet(isPresented: $vm.showImagePicker, content: {
             ImagePicker(image: $vm.selectedImage, isShown: $vm.showImagePicker, sourceType: vm.sourceType)
@@ -108,14 +142,14 @@ struct PhotoEditorView: View {
         
         //MARK: - Sheet Crop view
         .fullScreenCover(isPresented: $vm.showImageCropper) {
-            if let selectedImage = vm.selectedImage {
+            if let selectedImage = vm.modifiedImage {
                 SwiftyCropView(
                     imageToCrop: selectedImage,
                     maskShape: vm.maskShape,
                     configuration: vm.configeration
                 ) { croppedImage in
                     if let croppedImage = croppedImage{
-                        vm.selectedImage = croppedImage
+                        vm.modifiedImage = croppedImage
                     }
                 }
             }
@@ -125,8 +159,9 @@ struct PhotoEditorView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar(content: {
             ToolbarItem(placement: .automatic) {
+                //MARK: - Save button
                 Button(action: {
-                    guard let saveImage = vm.selectedImage else {return}
+                    guard let saveImage = vm.modifiedImage else {return}
                     let imageSaver = ImageSaver()
                     imageSaver.writeToPhotoAlbum(image: saveImage)
                 }, label: {

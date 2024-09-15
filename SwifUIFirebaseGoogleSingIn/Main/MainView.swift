@@ -47,55 +47,56 @@ struct MainView: View {
                 
                 //MARK: - if log in whith email
                 ScrollView{
-                    
-                    if viewModel.authProviders.contains(.email){
-                        Divider().foregroundStyle(.red).padding(.vertical)
-                        Text("Settings")
-                            .font(.title)
-                            .bold()
-                        //MARK: - password reset button
-                        CustomShadowButtonView(action: {
-                            Task {
-                                do {
-                                    try await viewModel.resetPassword()
-                                    print("password reset")
-                                }catch {
-                                    print(error)
+                    VStack{
+                        if !viewModel.authProviders.contains(.email){
+                            Divider().foregroundStyle(.red).padding(.vertical)
+                            Text("Account settings")
+                                .font(.title)
+                                .bold()
+                            //MARK: - password reset button
+                            CustomShadowButtonView(action: {
+                                Task {
+                                    do {
+                                        try await viewModel.resetPassword()
+                                        print("password reset")
+                                    }catch {
+                                        print(error)
+                                    }
                                 }
-                            }
-                        }, labelText: "Password reset")
-                        
-                        //MARK: - Update Password group
-                        SecureField("new password", text: $viewModel.newPassword)
-                            .textFieldStyle(.roundedBorder)
-                        CustomShadowButtonView(action: {
+                            }, labelText: "Password reset")
                             
-                            Task {
-                                do {
-                                    try await viewModel.updatePassword()
-                                    print("Password update")
-                                }catch {
-                                    print(error)
+                            //MARK: - Update Password group
+                            SecureField("new password", text: $viewModel.newPassword)
+                                .textFieldStyle(.roundedBorder)
+                            CustomShadowButtonView(action: {
+                                
+                                Task {
+                                    do {
+                                        try await viewModel.updatePassword()
+                                        print("Password update")
+                                    }catch {
+                                        print(error)
+                                    }
                                 }
-                            }
-                        }, labelText: "Passwod update")
-                        
-                        //MARK: - Update Email group
-                        TextField("new email", text: $viewModel.newEmail)
-                            .textFieldStyle(.roundedBorder)
-                        CustomShadowButtonView(action: {
+                            }, labelText: "Passwod update")
                             
-                            Task {
-                                do {
-                                    try await viewModel.updateEmail()
-                                    print("email update")
-                                }catch {
-                                    print(error)
+                            //MARK: - Update Email group
+                            TextField("new email", text: $viewModel.newEmail)
+                                .textFieldStyle(.roundedBorder)
+                            CustomShadowButtonView(action: {
+                                
+                                Task {
+                                    do {
+                                        try await viewModel.updateEmail()
+                                        print("email update")
+                                    }catch {
+                                        print(error)
+                                    }
                                 }
-                            }
-                        }, labelText: "Email update")
-                        
-                    }
+                            }, labelText: "Email update")
+                            
+                        }
+                    }.padding(.horizontal,50)
                 }
                 
             }
